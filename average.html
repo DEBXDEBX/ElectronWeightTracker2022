@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!--jQuery CDN -->
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <!-- My CSS File -->
+
+    <style>
+      body {
+        background-color: black;
+      }
+      #myDiv {
+        margin-top: 35px;
+      }
+      h1 {
+        color: #0af30a;
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      #myForm {
+        margin: 0 auto;
+        max-width: 60%;
+      }
+
+      #getAveBtn {
+        margin-top: 30px;
+      }
+      #clearFormBtn {
+        margin-top: 12px;
+      }
+      input[type="text"] {
+        width: 100%;
+      }
+    </style>
+
+    <title>Average</title>
+  </head>
+  <body>
+    <audio id="btnAudio">
+      <source src="assets/sound/btn.wav" type="audio/wav" />
+    </audio>
+
+    <audio id="warningNameTakenAudio">
+      <source src="assets/sound/warningNameTaken.wav" type="audio/wav" />
+    </audio>
+
+    <audio id="cancelAudio">
+      <source src="assets/sound/cancel.wav" type="audio/wav" />
+    </audio>
+
+    <div class="container" id="myDiv">
+      <h1><span id="display"></span></h1>
+      <div id="myForm">
+        <!--       <h1>177.8</h1> -->
+        <form>
+          <div class="form-group">
+            <input
+              id="wOne"
+              class="form-control-lg"
+              type="text"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="wTwo"
+              class="form-control-lg"
+              type="text"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="wThree"
+              class="form-control-lg"
+              type="text"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="wFour"
+              class="form-control-lg"
+              type="text"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="wFive"
+              class="form-control-lg"
+              type="text"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="wSix"
+              class="form-control-lg"
+              type="text"
+              placeholder=""
+            />
+          </div>
+          <div class="form-group">
+            <input
+              id="wSeven"
+              class="form-control-lg"
+              type="text"
+              placeholder=""
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              id="getAveBtn"
+              class="btn btn-success form-control"
+              type="submit"
+              value="Get Average"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              id="clearFormBtn"
+              class="btn btn-danger form-control"
+              type="button"
+              value="Clear Form"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- My JavaScript File -->
+    <script
+      type="text/javascript"
+      src="assets/js/weightAverageScript.js"
+    ></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
