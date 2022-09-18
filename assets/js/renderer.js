@@ -692,8 +692,6 @@ window.api.handleOpenFile((event, data) => {
   // push the year obj into the array of year Objects
   arrayOfYearObjs.push(newYear);
   sortArrayByName(arrayOfYearObjs);
-
-  saveYear(data);
   display.paintYearTabs(mapOutKey("name", arrayOfYearObjs));
   return;
 });
