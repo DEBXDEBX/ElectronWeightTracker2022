@@ -2,12 +2,13 @@
 class Weight {
   constructor(textValue) {
     this.textValue = textValue;
-
     this.numberValue = 0;
     this.isNumber = false;
     this.isNotEmpty = false;
     this.setNumber();
     this.checkForEmpty();
+    // create audio object
+    this.sound = new Audio();
   }
   // Getter's  Notice You have to have different names than the variables
   // I did not use these getters, but they work is you call them

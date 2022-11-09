@@ -1,15 +1,5 @@
 "use strict";
 
-//Select audio files
-const addAudio = document.querySelector("#addAudio");
-const addImageAudio = document.querySelector("#addImageAudio");
-const clickAudio = document.querySelector("#clickAudio");
-const warningEmptyAudio = document.querySelector("#warningEmptyAudio");
-const warningSelectAudio = document.querySelector("#warningSelectAudio");
-const warningNameTakenAudio = document.querySelector("#warningNameTakenAudio");
-const tabAudio = document.querySelector("#tabAudio");
-const btnAudio = document.querySelector("#btnAudio");
-const cancelAudio = document.querySelector("#cancelAudio");
 // D3 variables
 let width = 600;
 let height = 400;
@@ -24,6 +14,8 @@ let padding = 30;
 const arrayOfYearObjs = [];
 // create elements object
 const el = new Elements();
+// create audio object
+const sound = new Audio();
 // create display object
 const display = new Display(el, $);
 
@@ -86,8 +78,7 @@ function pushFileSettingsContainer(filePath) {
     }
   }
   if (isTaken) {
-    // warningNameTakenAudio.play();
-    warningNameTakenAudio.play();
+    sound.warningNameTakenAudio.play();
     display.showAlert("That file is already loaded!", "error");
     return;
   }
@@ -406,7 +397,7 @@ el.yearList.addEventListener("click", (e) => {
       return;
     }
     yearIndex = index;
-    tabAudio.play();
+    sound.tabAudio.play();
     display.displayBlock(this.leftSvg);
     display.displayBlock(this.mainSvg);
     // get the array of months and send it to display
@@ -441,7 +432,7 @@ el.monthList.addEventListener("click", (e) => {
     if (isNaN(monthIndex)) {
       return;
     }
-    clickAudio.play();
+    sound.clickAudio.play();
     this.myForm.reset();
     display.hideMyForm();
     display.showMyForm();
@@ -472,7 +463,7 @@ el.addWeightSubmitBtn.addEventListener("click", (e) => {
 
   let weight = el.weightInput.value.trim();
   if (!weight) {
-    warningEmptyAudio.play();
+    sound.warningEmptyAudio.play();
     display.showAlert("Please enter a weight!", "error");
     return;
   }
@@ -480,7 +471,7 @@ el.addWeightSubmitBtn.addEventListener("click", (e) => {
 
   // set weight
   arrayOfYearObjs[yearIndex].arrayOfMonthObjects[monthIndex].weight = weight;
-  addAudio.play();
+  sound.addAudio.play();
   // save
   saveYear(arrayOfYearObjs[yearIndex]);
   display.showAlert("You added a weight!", "success", 3000);
@@ -492,7 +483,7 @@ el.addWeightSubmitBtn.addEventListener("click", (e) => {
 });
 // Cancel Btn Weight Form
 el.cancelBtn.addEventListener("click", (e) => {
-  cancelAudio.play();
+  sound.cancelAudio.play();
   el.myForm.reset();
   display.hideMyForm();
   // get rid of active class
@@ -523,7 +514,7 @@ el.saveSettingsSubmitBtn.addEventListener("click", (e) => {
   settingsObj.autoLoad = el.autoLoadCheckBox.checked;
   // save the object
   settingsStorage.saveSettings(settingsObj);
-  addAudio.play();
+  sound.addAudio.play();
   // reset form
   el.settingsForm.reset();
   if (settingsObj.autoLoad) {
@@ -545,7 +536,7 @@ el.saveSettingsSubmitBtn.addEventListener("click", (e) => {
 
 // when You click on settings form cancel Btn
 el.settingsCancelBtn.addEventListener("click", (e) => {
-  cancelAudio.play();
+  sound.cancelAudio.play();
   // hide form
   display.displayNone(el.settingsForm);
   display.paintYearTabs(mapOutKey("name", arrayOfYearObjs));
@@ -554,7 +545,7 @@ el.settingsCancelBtn.addEventListener("click", (e) => {
 
 // when You click on settings form factory reset btn
 el.factoryResetBtn.addEventListener("click", (e) => {
-  btnAudio.play();
+  sound.btnAudio.play();
   let settingsStorage = new SettingsStorage();
   settingsStorage.clearFileFromLocalStorage();
   loadUpSettingsForm();
@@ -572,7 +563,7 @@ el.autoLoadList.addEventListener("click", (e) => {
   // event delegation
   if (e.target.classList.contains("deleteFile")) {
     if (!e.ctrlKey) {
-      wrongAudio.play();
+      sound.wrongAudio.play();
       display.showAlert(
         "You have to hold down ctrl key to make a deletion",
         "error"
@@ -586,7 +577,7 @@ el.autoLoadList.addEventListener("click", (e) => {
       let deleteIndex = parseInt(dataIndex);
       // delete path
       settingsArrayContainer.splice(deleteIndex, 1);
-      warningSelectAudio.play();
+      sound.warningSelectAudio.play();
       // update Form
       display.showAutoLoadList(settingsArrayContainer);
     }
@@ -597,14 +588,14 @@ el.autoLoadList.addEventListener("click", (e) => {
 // *************************************************************
 window.api.handleNewYear((event, { name, path }) => {
   if (!name || !path) {
-    wrongAudio.play();
+    sound.wrongAudio.play();
     display.showAlert("Error creating a year", "error");
     return;
   }
 
   if (isNaN(name)) {
     display.showAlert("You have to enter number's to create a year", "error");
-    wrongAudio.play();
+    sound.wrongAudio.play();
     return;
   }
 
@@ -710,6 +701,6 @@ window.api.handleAuotLoadPaths((event, fileNames) => {
       settingsArrayContainer.push(filePath);
     }
   }
-  addImageAudio.play();
+  sound.addImageAudio.play();
   display.showAutoLoadList(settingsArrayContainer);
 });
