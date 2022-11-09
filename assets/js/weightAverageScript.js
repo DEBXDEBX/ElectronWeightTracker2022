@@ -45,10 +45,9 @@ class Weight {
   }
 } //end of Weight class
 
-//Select audio files
-const btnAudio = document.querySelector("#btnAudio");
-const cancelAudio = document.querySelector("#cancelAudio");
-const warningNameTakenAudio = document.querySelector("#warningNameTakenAudio");
+// create audio object
+const sound = new Audio();
+
 //Select HTML Elements
 let displayMessage = document.querySelector("#display");
 let avergeBtn = document.querySelector("#getAveBtn");
@@ -75,7 +74,7 @@ clearBtn.addEventListener("click", function () {
   weight7.value = "";
   //This updates the display
   displayMessage.innerHTML = onLoadMessage;
-  cancelAudio.play();
+  sound.cancelAudio.play();
 });
 
 avergeBtn.addEventListener("click", function (event) {
@@ -136,14 +135,14 @@ avergeBtn.addEventListener("click", function (event) {
     !wObject7.isNumber
   ) {
     displayMessage.innerHTML = "Please enter numbers only!";
-    warningNameTakenAudio.play();
+    sound.warningNameTakenAudio.play();
   } else {
     if (isNaN(totalWeight)) {
-      warningNameTakenAudio.play();
+      sound.warningNameTakenAudio.play();
       displayMessage.innerHTML = "Please enter numbers to average!";
       return;
     }
     displayMessage.innerHTML = messagePartOne + totalWeight;
-    btnAudio.play();
+    sound.btnAudio.play();
   }
 });
