@@ -345,6 +345,7 @@ const saveYear = (year) => {
 }; //End saveYear
 
 window.api.handleFontSizeChange((event, fontSize) => {
+  sound.btnAudio.play();
   switch (fontSize) {
     case "x-small":
       el.root.style.fontSize = "10px";
@@ -370,6 +371,7 @@ window.api.handleShowAlert((event, { message, msgType }) => {
   display.showAlert(message, msgType);
 });
 window.api.handleShowSettingsForm((event, noData) => {
+  sound.clickAudio.play();
   loadUpSettingsForm();
   display.showSettingsForm();
 });
@@ -456,6 +458,7 @@ el.addWeightSubmitBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   if (isNaN(Number(el.weightInput.value))) {
+    sound.warningEmptyAudio.play();
     display.showAlert("You did not enter a number for the Weight!", "error");
     el.myForm.reset();
     return;
