@@ -7,8 +7,6 @@ class Weight {
     this.isNotEmpty = false;
     this.setNumber();
     this.checkForEmpty();
-    // create audio object
-    this.sound = new Audio();
   }
   // Getter's  Notice You have to have different names than the variables
   // I did not use these getters, but they work is you call them
@@ -46,7 +44,7 @@ class Weight {
 } //end of Weight class
 
 // create audio object
-const sound = new Audio();
+const sound = new AudioWeightAverage();
 
 //Select HTML Elements
 let displayMessage = document.querySelector("#display");
